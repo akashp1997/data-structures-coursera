@@ -28,14 +28,18 @@ if __name__ == "__main__":
         if next == ')' or next == ']' or next == '}':
             # Process closing bracket, write your code here
             if not opening_brackets_stack:
-		return i
+                print i
+                quit()
 	    
-	    top = stack.pop()
-	    if top.match(next):
-		return i
+            top = stack.pop()
+            if top.match(next):
+                print i
+                quit()
     if opening_brackets_stack:
-	top = stack.pop()
-	return top.position
-    return "Success"
+        top = stack.pop()
+        print top.position
+        quit()
+    print "Success"
+    quit()
 
     # Printing answer, write your code here
