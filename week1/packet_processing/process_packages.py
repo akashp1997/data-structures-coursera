@@ -17,7 +17,15 @@ class Buffer:
 
     def Process(self, request):
         # write your code here
-        return Response(False, -1)
+        if len(self.finish_time)==self.size:
+            return Response(True, -1)
+
+        if self.finish_time:
+            self.finish_time = request.arrival_time + request.process_time
+            return Response(False, request.arrival_time)
+
+        response = Response(False, self.finish_time[-1])
+        self.finish_time.append(self.finish_time[-1] + request.process_time)
 
 def ReadRequests(count):
     requests = []
